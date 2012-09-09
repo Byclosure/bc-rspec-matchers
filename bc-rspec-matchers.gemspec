@@ -13,7 +13,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = "bc-rspec-matchers"
   gem.require_paths = ["lib"]
-  gem.version       = Bc::Rspec::Matchers::VERSION
+  gem.version       = Bc::RSpec::Matchers::VERSION
 
   gem.add_development_dependency "rake"
   gem.add_development_dependency "ruby-debug"

@@ -1,5 +1,5 @@
 module Bc
-  module Rspec
+  module RSpec
     module Matchers
       VERSION = "0.0.1"
     end
