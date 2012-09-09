@@ -8,11 +8,13 @@ module Bc
           @pattern = pattern
         end
     
-        def matches?(actual)
+        def matches?(actual) # uses failure_message_for_should
           @actual = actual
       
           is_match(@actual, @pattern)
         end
+
+        # does_not_maches?(actual) # uses failure_message_for_should_not
 
         def description
           "match to #{@pattern.inspect}"
