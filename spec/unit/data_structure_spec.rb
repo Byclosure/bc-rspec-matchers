@@ -83,7 +83,7 @@ describe Bc::RSpec::Matchers::DataStructure do
   	  Bc::RSpec::Matchers::DataStructure.new(["string"])
   	end
 
-  	it { should match_to(["string"]) }
+  	it { should match_to(["string"]) }    
   	it { should_not match_to([:symbol, "string"]) }
   	it { should_not match_to(["string", :symbol]) }
   	it { should_not match_to([:string]) }
@@ -104,5 +104,20 @@ describe Bc::RSpec::Matchers::DataStructure do
   	it { should match_to({:every => "hash"}) }
   	it { should_not match_to([]) }
   	it { should_not match_to(nil) }
+
+    its(:description) { should == "match to {}" }
+  end
+
+  describe "created with {:key => 'value'}" do
+    subject do
+      Bc::RSpec::Matchers::DataStructure.new({:key => 'value'})
+    end
+
+    it { should match_to({:key => 'value'}) }
+    it { should match_to({:key => 'value', :key2 => 'value2'}) }
+    it { should_not match_to({}) }
+    it { should_not match_to(nil) }
+
+    its(:description) { should == "match to #{{:key => 'value'}.inspect}" }
   end
 end

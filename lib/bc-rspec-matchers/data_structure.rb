@@ -14,8 +14,6 @@ module Bc
           is_match(@actual, @pattern)
         end
 
-        # does_not_maches?(actual) # uses failure_message_for_should_not
-
         def description
           "match to #{@pattern.inspect}"
         end
