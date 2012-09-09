@@ -7,7 +7,8 @@ require 'rspec/core/rake_task'
 task :default => :spec
 
 RSpec::Core::RakeTask.new(:spec) do |spec|
-  spec.rspec_opts = File.read(".rspec").gsub("\n", " ")
+  spec.pattern = "./spec/**/*_spec.rb"
+  spec.rspec_opts = File.read(".rspec").split("\n")
 end
 
 RSpec::Core::RakeTask.new(:rcov) do |spec|
