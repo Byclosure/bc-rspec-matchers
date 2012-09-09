@@ -28,6 +28,16 @@ TODO: Write usage instructions here
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 
-## Notes to Manage Gemfile updates
+## Notes to Manage and improve this gem
 
 See: http://railscasts.com/episodes/245-new-gem-with-bundler?view=asciicast
+
+### Update & Release
+
+Run `bundle exec rake release`
+
+or
+
+1. Update `lib/bc-rspec-matchers/version.rb` version.rb
+2. gem build
+3. gem push
