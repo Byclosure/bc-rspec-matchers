@@ -29,4 +29,11 @@ RSpec::Matchers.define :match_to do |expected|
   description do
     "match to #{expected.inspect}"
   end
+
+=begin
+  chain :after_matches do |actual|
+  	@actual = actual
+  end
+=end
+
 end
