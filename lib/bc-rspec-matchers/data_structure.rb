@@ -72,6 +72,10 @@ module Bc
           end
         end
       end
+      
+      def match_data_structure(pattern)
+        DataStructure.new(pattern)
+      end
     end
   end
 end
