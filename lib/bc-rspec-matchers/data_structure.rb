@@ -13,6 +13,10 @@ module Bc
       
           is_match(@actual, @pattern)
         end
+
+        def description
+          "match to #{@pattern.inspect}"
+        end
     
         def failure_message_for_should
           "expected #{@pattern.inspect} to match to #{@actual.inspect}. Fragment #{@fragment_pattern.inspect} didn't match to #{@fragment_actual.inspect}."

@@ -12,6 +12,8 @@ describe Bc::RSpec::Matchers::DataStructure do
   	it { should_not match_to("") }
   	it { should_not match_to({}) }
   	it { should_not match_to([]) }
+
+  	its(:description) { should == "match to nil" }
   end
 
   describe "created with 'string'" do
@@ -22,6 +24,8 @@ describe Bc::RSpec::Matchers::DataStructure do
   	it { should match_to("string") }
   	it { should_not match_to(:string) }
   	it { should_not match_to(nil) }
+
+  	its(:description) { should == "match to \"string\"" }
   end
 
   describe "created with :symbol" do
@@ -32,6 +36,8 @@ describe Bc::RSpec::Matchers::DataStructure do
   	it { should match_to(:symbol) }
   	it { should_not match_to("symbol") }
   	it { should_not match_to(nil) }
+
+  	its(:description) { should == "match to :symbol" }
   end
 
   describe "created with []" do
@@ -41,9 +47,11 @@ describe Bc::RSpec::Matchers::DataStructure do
 
   	it { should match_to([]) }
   	it { should match_to([nil]) }
-  	it { should match_to(["string", :symbol]) }
+  	it { should match_to(["every", :array]) }
   	it { should_not match_to(nil) }
   	it { should_not match_to({}) }
+
+  	its(:description) { should == "match to []" }
   end
 
   describe "created with ['string']" do
@@ -59,7 +67,18 @@ describe Bc::RSpec::Matchers::DataStructure do
   	it { should_not match_to(nil) }
   	it { should_not match_to([]) }
   	it { should_not match_to({}) }
+
+  	its(:description) { should == "match to [\"string\"]" }
   end
 
-  describe "created with "
+  describe "created with {}" do
+  	subject do
+  	  Bc::RSpec::Matchers::DataStructure.new({})
+  	end
+
+  	it { should match_to({}) }
+  	it { should match_to({:every => "hash"}) }
+  	it { should_not match_to([]) }
+  	it { should_not match_to(nil) }
+  end
 end
