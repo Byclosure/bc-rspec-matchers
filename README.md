@@ -6,19 +6,36 @@ TODO: Write a gem description
 
 Add this line to your application's Gemfile:
 
-    gem 'bc-rspec-matchers'
+    gem 'bc-rspec-matchers', "~> 0.0.3"
 
 And then execute:
 
+    $ bundle install
+
+Go to your RSpec configuration files and add:
+
+    RSpec.configure do |c|
+      c.include Bc::RSpec::Matchers
+    end
+
+## Development & Improvment of bc-rspec-matchers
+
     $ bundle
 
-Or install it yourself as:
 
-    $ gem install bc-rspec-matchers
+To run specs in autotest enable just run: `bundle exec autotest`.
 
-## Usage
+To run specs, just run: `bundle exec rake spec`
 
-TODO: Write usage instructions here
+
+## Add new gem dependencies
+
+*Atention:* Do not use Gemfile for that, Gemfile will automatically be created for you.
+
+Steps:
+1. Go to bc-rspec-matchers.gem
+2. See and use the `gem.add_development_dependency` (that works the same way as Gemfile depencies)
+3. run `bundle`
 
 ## Contributing
 
@@ -34,13 +51,8 @@ See: http://railscasts.com/episodes/245-new-gem-with-bundler?view=asciicast
 
 ### Update & Release
 
-Run `bundle exec rake release`
-
-or
-
 1. Update `lib/bc-rspec-matchers/version.rb` version.rb
-2. gem build
-3. gem push
+2. Run `bundle exec rake release`
 
 # Relevant blog posts
  * http://eggsonbread.com/2010/03/28/my-rspec-best-practices-and-tips/
