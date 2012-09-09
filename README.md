@@ -1,6 +1,6 @@
 # Bc::Rspec::Matchers
 
-TODO: Write a gem description
+This projects aims to be an open source effort to collect all the RSpec custom matchers & macros used across Byclosure projects.
 
 ## Installation
 
@@ -33,6 +33,7 @@ To run specs, just run: `bundle exec rake spec`
 *Atention:* Do not use Gemfile for that, Gemfile will automatically be created for you.
 
 Steps:
+
 1. Go to bc-rspec-matchers.gem
 2. See and use the `gem.add_development_dependency` (that works the same way as Gemfile depencies)
 3. run `bundle`
@@ -51,7 +52,7 @@ See: http://railscasts.com/episodes/245-new-gem-with-bundler?view=asciicast
 
 ### Update & Release
 
-1. Update `lib/bc-rspec-matchers/version.rb` version.rb
+1. Update gem version: `lib/bc-rspec-matchers/version.rb`
 2. Run `bundle exec rake release`
 
 # Relevant blog posts
