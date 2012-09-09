@@ -14,6 +14,18 @@ describe Bc::RSpec::Matchers::DataStructure do
   	it { should_not match_to([]) }
 
   	its(:description) { should == "match to nil" }
+  	
+  	describe "after matches?(\"\")" do
+  	  before { subject.matches?("") }
+  	  
+      its(:failure_message_for_should) { should == "expected DataStructure(nil) to match to \"\". Fragment nil didn't match to \"\"." }
+  	end
+
+    describe "after matches?(nil)" do
+      before { subject.matches?(nil) }
+
+      its(:failure_message_for_should_not) { should == "expected DataStructure(nil) not to match to nil" }
+    end
   end
 
   describe "created with 'string'" do
@@ -26,6 +38,18 @@ describe Bc::RSpec::Matchers::DataStructure do
   	it { should_not match_to(nil) }
 
   	its(:description) { should == "match to \"string\"" }
+
+    describe "after matches?(:symbol)" do
+      before { subject.matches?(:symbol) }
+
+      its(:failure_message_for_should) { should == "expected DataStructure(\"string\") to match to :symbol. Fragment \"string\" didn't match to :symbol." }
+    end
+
+    describe "after matches?(\"string\")" do
+      before { subject.matches?("string") }
+
+      its(:failure_message_for_should_not) { should == "expected DataStructure(\"string\") not to match to \"string\"" }
+    end
   end
 
   describe "created with :symbol" do
@@ -46,8 +70,8 @@ describe Bc::RSpec::Matchers::DataStructure do
   	end
 
   	it { should match_to([]) }
-  	it { should match_to([nil]) }
-  	it { should match_to(["every", :array]) }
+  	it { should_not match_to([nil]) }
+  	it { should_not match_to(["every", :array]) }
   	it { should_not match_to(nil) }
   	it { should_not match_to({}) }
 
@@ -60,8 +84,8 @@ describe Bc::RSpec::Matchers::DataStructure do
   	end
 
   	it { should match_to(["string"]) }
-  	it { should match_to([:symbol, "string"]) }
-  	it { should match_to(["string", :symbol]) }
+  	it { should_not match_to([:symbol, "string"]) }
+  	it { should_not match_to(["string", :symbol]) }
   	it { should_not match_to([:string]) }
   	it { should_not match_to("string") }
   	it { should_not match_to(nil) }

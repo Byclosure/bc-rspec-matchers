@@ -19,18 +19,24 @@ module Bc
         end
     
         def failure_message_for_should
-          "expected #{@pattern.inspect} to match to #{@actual.inspect}. Fragment #{@fragment_pattern.inspect} didn't match to #{@fragment_actual.inspect}."
+          "expected #{self} to match to #{@actual.inspect}. " + (@failure_message_for_should_fragments ||
+             "Fragment #{@fragment_pattern.inspect} didn't match to #{@fragment_actual.inspect}."
+          )
         end
     
         def failure_message_for_should_not
-          "expected #{@pattern.inspect} not to match to #{@actual.inspect}"
+          "expected #{self} not to match to #{@actual.inspect}"
         end
 
         def to_s
-          "#{self.class.name}(#{@pattern.inspect})"
+          "#{self.class.basename}(#{@pattern.inspect})"
         end
     
         private
+
+        def self.basename
+          name.sub(/^.*::/, '')
+        end
 
         def is_match(actual, pattern)
           @fragment_actual, @fragment_pattern = actual, pattern
@@ -48,10 +54,15 @@ module Bc
             end
             true
           elsif pattern.is_a?(Array)
-            pattern.each_with_index do |el, i|
-              return false unless is_match(actual[i], el)
+            if pattern.size == actual.size
+              pattern.each_with_index do |el, i|
+                return false unless is_match(actual[i], el)
+              end
+              true
+            else
+              @failure_message_for_should_fragments = "Fragment #{pattern.inspect}.size == #{pattern.size} where #{actual.inspect}.size == #{actual.size}"
+              false
             end
-            true
           elsif pattern == WILDCARD
             !actual.blank?
           else
