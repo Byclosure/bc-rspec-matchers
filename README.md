@@ -41,3 +41,7 @@ or
 1. Update `lib/bc-rspec-matchers/version.rb` version.rb
 2. gem build
 3. gem push
+
+# Relevant blog posts
+ * http://eggsonbread.com/2010/03/28/my-rspec-best-practices-and-tips/
+ * http://benscheirman.com/2011/05/dry-up-your-rspec-files-with-subject-let-blocks

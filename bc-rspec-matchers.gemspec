@@ -16,5 +16,6 @@ Gem::Specification.new do |gem|
   gem.version       = Bc::Rspec::Matchers::VERSION
 
   gem.add_development_dependency "rake"
+  gem.add_development_dependency "ruby-debug"
   gem.add_development_dependency "rspec"
 end
