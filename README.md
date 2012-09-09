@@ -45,3 +45,4 @@ or
 # Relevant blog posts
  * http://eggsonbread.com/2010/03/28/my-rspec-best-practices-and-tips/
  * http://benscheirman.com/2011/05/dry-up-your-rspec-files-with-subject-let-blocks
+ * http://solnic.eu/2011/01/14/custom-rspec-2-matchers.html (chains)
