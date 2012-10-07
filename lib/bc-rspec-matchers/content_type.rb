@@ -38,6 +38,10 @@ module Bc
           @@sym_to_regexp[symbol] || raise(ArgumentError.new("Symbol (#{symbol}) Found"))
         end
       end
+      
+      def content_type(content_type_symbol)
+        ContentType.new(content_type_symbol)
+      end
     end
   end
 end
